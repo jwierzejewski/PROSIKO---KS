@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+
+package qa;
+
+// The greeting service definition.
+service QAService {
+  // Sends a greeting
+  rpc SendQuestion (Question) returns (Answer);
+}
+
+// The request message containing the user's name.
+message Question {
+  string message = 1;
+}
+
+// The response message containing the greetings.
+message Answer {
+  string message = 1;
+}
