@@ -1,4 +1,5 @@
 ﻿using Commons;
+using GrpcServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,20 +58,6 @@ namespace Server.Communicators
         public void Stop()
         {
             shouldTerminate = true;
-        }
-
-        public List<byte[]> createPackages(byte[] fullData)
-        {
-            int packageSize = 60000;
-            int dataStart = 0;
-            List<byte[]> packageList = new();
-            while (dataStart < fullData.Length)
-            {
-                byte[] package = fullData.Skip(dataStart).Take(Math.Min(dataStart + packageSize, fullData.Length)).ToArray();
-                packageList.Add(package);
-                dataStart += packageSize;
-            }
-            return packageList;
         }
     }
 }

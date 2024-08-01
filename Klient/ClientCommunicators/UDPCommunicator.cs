@@ -26,25 +26,10 @@ namespace Klient.ClientCommunicators
         {
             UdpClient udpClient = new UdpClient();
             udpClient.Connect(hostname, portNo);
-            byte[] numberBytes, countBytes;
             udpClient.SendPackages(question);
             IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
             string res = udpClient.RecievePackages(ref RemoteIpEndPoint);
             return res;
-        }
-
-        public List<byte[]> createPackages(byte[] fullData)
-        {
-            int packageSize = 65536;
-            int dataStart = 0;
-            List<byte[]> packageList = new();
-            while (dataStart<fullData.Length)
-            {
-                byte[] package = fullData.Skip(dataStart).Take(Math.Min(packageSize,fullData.Length-dataStart)).ToArray();
-                packageList.Add(package);
-                dataStart += packageSize;
-            }
-            return packageList;
         }
     }
 }

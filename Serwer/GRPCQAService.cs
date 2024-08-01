@@ -18,9 +18,7 @@ namespace Server
         }
         public override Task<Answer> SendQuestion(Question question, ServerCallContext context)
         {
-            //Console.WriteLine($"R: {question.Message.Length} B {question.Message.SubstringMax(40)}");
             string answer = onCommand(question.Message);
-            //Console.WriteLine($"S: {answer.Length} B {answer.SubstringMax(40)}");
             return Task.FromResult(new Answer
             {
                 Message = answer

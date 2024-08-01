@@ -39,10 +39,7 @@ namespace Klient.ClientCommunicators
             watcher.IncludeSubdirectories = true;
             watcher.EnableRaisingEvents = true;
 
-            //File.Create(Path.Combine(repoDirectoryPath, fileName + ".in"));
             File.AppendAllText(Path.Combine(repoDirectoryPath, fileName + ".in"), question);
-            //SafeFileHandle fileHandle = File.OpenHandle();
-            //File.SetLastWriteTime(Path.Combine(repoDirectoryPath, fileName + ".in"), DateTime.Now);
 
             lock (locker)
             {

@@ -11,7 +11,6 @@ namespace Server
 {
     internal class SerialPortCommunicator : ICommunicator
     {
-        private string portName;
         private CommandD onCommand;
         private CommunicatorD onDisconnect;
         private Thread _thread;

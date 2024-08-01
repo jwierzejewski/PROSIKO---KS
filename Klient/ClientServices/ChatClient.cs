@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Klient.ClientServices
 {
-    //Base64
     internal class ChatClient : QAClient
     {
         public ChatClient(ClientCommunicator clientCommunicator) : base(clientCommunicator)
