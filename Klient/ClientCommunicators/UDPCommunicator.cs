@@ -24,7 +24,8 @@ namespace Klient.ClientCommunicators
         }
         public override string QA(string question)
         {
-            UdpClient udpClient = new UdpClient(hostname, portNo);
+            UdpClient udpClient = new UdpClient();
+            udpClient.Connect(this.hostname, this.portNo);
             udpClient.SendPackages(question);
             IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
             string res = udpClient.RecievePackages(ref RemoteIpEndPoint);
