@@ -18,7 +18,7 @@ namespace Server
 
         public Serwer()
         {
-            startedServices.Add("conf", new ConfService(ListenersList,ServicesList, StartListener, StopListener, StartServiceModule, StopServiceModule));
+            startedServices.Add("conf", new ConfService(ListenersList, ServicesList, StartListener, StopListener, StartServiceModule, StopServiceModule));
         }
 
         public void AddServiceModule(string name, IServiceModule service)
@@ -120,6 +120,7 @@ namespace Server
             }
             throw new Exception("Listener do not exists");
         }
+
         internal void Start()
         {
             foreach (var listener in startedListeners)
