@@ -58,8 +58,8 @@ namespace Server.Services
 
         private string getHandler(string data)
         {
-            string reciever = CommonTools.GetParam(data, 0);
-            string answer = $"{messagesList(reciever)}";
+            string receiver = CommonTools.GetParam(data, 0);
+            string answer = $"{messagesList(receiver)}";
             return answer;
         }
 
@@ -68,20 +68,20 @@ namespace Server.Services
             string answer;
             try
             {
-                string reciever = CommonTools.GetParam(data, 0);
+                string receiver = CommonTools.GetParam(data, 0);
                 string sender = CommonTools.GetParam(data, 1);
                 string msg = CommonTools.FromSpecifiedDelimeterToEnd(data, 2);
 
-                users.Add(reciever);
+                users.Add(receiver);
                 users.Add(sender);
 
-                if (messeges.ContainsKey(reciever))
+                if (messeges.ContainsKey(receiver))
                 {
-                    messeges[reciever].Add((sender, msg));
+                    messeges[receiver].Add((sender, msg));
                 }
                 else
                 {
-                    messeges[reciever] = new List<(string, string)>() { (sender, msg) };
+                    messeges[receiver] = new List<(string, string)>() { (sender, msg) };
                 }
 
                 answer = "sended";
@@ -94,12 +94,12 @@ namespace Server.Services
             return answer;
         }
 
-        private string messagesList(string reciever)
+        private string messagesList(string receiver)
         {
             string messagesListString = "";
-            if (messeges.ContainsKey(reciever))
+            if (messeges.ContainsKey(receiver))
             {
-                foreach (var message in messeges[reciever])
+                foreach (var message in messeges[receiver])
                 {
                     string messageString = $" from:{message.sender} content:{message.content}";
                     messagesListString += messageString;

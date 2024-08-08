@@ -15,10 +15,10 @@ namespace Klient.ClientServices
 
         }
 
-        internal string SendMessage(string senderName, string recieverName, string message)
+        internal string SendMessage(string senderName, string receiverName, string message)
         {
             string question = $"chat msg";
-            string data = $"{recieverName} {senderName} {message}";
+            string data = $"{receiverName} {senderName} {message}";
             string encodedData = CommonTools.EncodeToBase64(data);
             question += $" {encodedData}\n";
 
@@ -29,10 +29,10 @@ namespace Klient.ClientServices
             return decodedAnswer;
         }
 
-        internal string GetMessages(string recieverName)
+        internal string GetMessages(string receiverName)
         {
             string question = $"chat get";
-            string data = $"{recieverName}";
+            string data = $"{receiverName}";
             string encodedData = CommonTools.EncodeToBase64(data);
             question += $" {encodedData}\n";
 

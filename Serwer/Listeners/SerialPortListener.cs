@@ -12,7 +12,7 @@ namespace Server.Listeners
     internal class SerialPortListener : IListener
     {
         private string portName;
-        private SerialPort serialPort;
+        SerialPortCommunicator SPCommunicator;
 
         public SerialPortListener(object portName = null)
         {
@@ -20,20 +20,19 @@ namespace Server.Listeners
                 this.portName = "COM1";
             else
                 this.portName = (string)portName;
-            serialPort = new SerialPort(this.portName);
         }
 
         public string Name => $"SerialPort:{portName}";
 
         public void Start(CommunicatorD onConnect)
         {
-            SerialPortCommunicator SPCommunicator = new SerialPortCommunicator(serialPort);
+            SPCommunicator = new SerialPortCommunicator(portName);
             onConnect(SPCommunicator);
         }
 
         public void Stop()
         {
-            serialPort.Close();
+            SPCommunicator.Stop();
         }
     }
 }

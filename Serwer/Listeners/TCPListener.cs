@@ -15,7 +15,7 @@ namespace Server.Listeners
         TcpListener server;
         private bool shouldTermiante;
 
-        public TCPListener(object portNo)
+        public TCPListener(object portNo = null)
         {
             if (portNo == null)
                 this.portNo = 12345;

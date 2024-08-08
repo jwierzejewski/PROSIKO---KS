@@ -17,9 +17,9 @@ namespace Server
         private SerialPort _serialPort;
         private bool shouldTerminate = false;
 
-        public SerialPortCommunicator(SerialPort serialPort) 
+        public SerialPortCommunicator(string portName) 
         {
-            this._serialPort = serialPort;
+            this._serialPort = new SerialPort(portName);
             _serialPort.ReadTimeout = 50000;
             _serialPort.WriteTimeout = 50000;
         }
@@ -59,7 +59,6 @@ namespace Server
         public void Stop()
         {
             shouldTerminate = true;
-            _serialPort.Close();
         }
     }
 }

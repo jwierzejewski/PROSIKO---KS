@@ -42,29 +42,16 @@ PingClient pc5 = new PingClient(spCommunicator);
 duration = pc5.Test(amount, outputLen, inputLen);
 Console.WriteLine($"SerialPort Ping client average time: {duration}");
 
-//Console.WriteLine($"TCP Ping client average time: {duration}");
 
-/*
-ChatClient chc = new ChatClient(clientCommunicator);
-chc.SendMessage("user1", "user2", "hello");
-chc.SendMessage("user2", "user1", "hi");
-chc.SendMessage("user1", "user3", "hello");
-
-chc.Who();
-chc.GetMessages("user1");*/
-
-
-//FileClient fc = new FileClient(spCommunicator);
-//fc.putFile("raw-material-properties.csv");
-//fc.dir();
-//fc.getFile("raw-material-properties.csv");
 
 Console.WriteLine(cc.startMedium("udp", 12348));
 
 Console.WriteLine(cc.startedMediums());
 Console.WriteLine(cc.startedServices());
 UDPCommunicator udpCommunicator2 = new UDPCommunicator("localhost", 12348);
-//Console.WriteLine(cc.stopMedium("UDP:12347"));
+Console.WriteLine(cc.stopMedium("UDP:12346"));
+Console.WriteLine(cc.stopMedium("SerialPort:COM1"));
+Console.WriteLine(cc.startedMediums());
 //UDPCommunicator udpCommunicator2 = new UDPCommunicator("localhost",12347,1357);
 
 

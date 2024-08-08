@@ -13,7 +13,7 @@ namespace Server.Listeners
         private int portNo;
         private UDPCommunicator udpCommunicator;
 
-        public UDPListener(object portNo) 
+        public UDPListener(object portNo = null) 
         {
             if (portNo == null)
                 this.portNo = 12346;
