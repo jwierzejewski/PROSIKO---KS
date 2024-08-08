@@ -14,23 +14,22 @@ namespace Commons
     {
         public static void SendPackages(this UdpClient udpClient, string data, IPEndPoint endPoint = null)
         {
-            byte[] countBytes, numberBytes;
+            byte[] packagesCount, packageNumber;
             int MaxSize = 65507;
             int ConfSize = 8;
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             var packageList = createPackages(dataBytes, MaxSize - ConfSize);
             for (int j = 0; j < packageList.Count; j++)
             {
-                byte[] packageData = packageList[j];
-                byte[] sendingPackage = new byte[packageData.Length + 8];
+                byte[] sendingPackage = new byte[packageList[j].Length + 8];
 
-                countBytes = BitConverter.GetBytes(packageList.Count());
-                countBytes.CopyTo(sendingPackage, 0);
+                packagesCount = BitConverter.GetBytes(packageList.Count());
+                packagesCount.CopyTo(sendingPackage, 0);
 
-                numberBytes = BitConverter.GetBytes(j);
-                numberBytes.CopyTo(sendingPackage, 4);
+                packageNumber = BitConverter.GetBytes(j);
+                packageNumber.CopyTo(sendingPackage, 4);
 
-                packageData.CopyTo(sendingPackage, 8);
+                packageList[j].CopyTo(sendingPackage, 8);
 
                 udpClient.Send(sendingPackage, sendingPackage.Length, endPoint);
                 if (packageList.Count - 1 != j)

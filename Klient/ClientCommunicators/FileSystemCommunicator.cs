@@ -22,11 +22,6 @@ namespace Klient.ClientCommunicators
             this.repoDirectoryPath = repoDirectoryPath;
         }
 
-        ~FileSystemCommunicator()
-        {
-
-        }
-
         public override string QA(string question)
         {
             this.fileName = $"{DateTime.Now:yyyyMMddHHmmssfff}_{new Random().Next(0, 9999)}";

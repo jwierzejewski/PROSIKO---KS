@@ -28,11 +28,8 @@ namespace Klient.ClientCommunicators
             string message;
 
             _serialPort.Open();
-
             _serialPort.Write(question);
-
             string res = _serialPort.ReadLine();
-
             _serialPort.Close();
 
             return res;

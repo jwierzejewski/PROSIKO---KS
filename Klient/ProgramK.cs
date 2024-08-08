@@ -52,12 +52,11 @@ UDPCommunicator udpCommunicator2 = new UDPCommunicator("localhost", 12348);
 Console.WriteLine(cc.stopMedium("UDP:12346"));
 Console.WriteLine(cc.stopMedium("SerialPort:COM1"));
 Console.WriteLine(cc.startedMediums());
-//UDPCommunicator udpCommunicator2 = new UDPCommunicator("localhost",12347,1357);
 
 
 
 ChatClient chc = new ChatClient(grpcCommunicator);
-Console.WriteLine(chc.SendMessage("Jan", "Adam", "siema"));
+Console.WriteLine(chc.SendMessage("Jan", "Adam", "Cześć"));
 Console.WriteLine(chc.GetMessages("Adam"));
 Console.WriteLine(chc.Who());
 
